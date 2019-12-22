@@ -215,7 +215,8 @@ func (a *ExecAllocator) Allocate(ctx context.Context, opts ...BrowserOption) (*B
 	// Chrome will sometimes fail to print the websocket, or run for a long
 	// time, without properly exiting. To avoid blocking forever in those
 	// cases, give up after ten seconds.
-	const wsURLReadTimeout = 10 * time.Second
+	// ANVT change wsURLReadTimeout from 10 * time.Second to 30 * time.Second
+	const wsURLReadTimeout = 30 * time.Second
 
 	var wsURL string
 	wsURLChan := make(chan struct{}, 1)
